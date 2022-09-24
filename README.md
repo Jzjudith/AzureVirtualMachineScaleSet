@@ -1,1 +1,1 @@
-# AzureVirtualScaleSet
+# AzureVirtualMachineScaleSet
