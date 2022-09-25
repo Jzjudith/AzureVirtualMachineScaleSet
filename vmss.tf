@@ -18,22 +18,23 @@ resource "azurerm_subnet" "internal" {
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "example" {
-  name                = "example-vmss"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  sku                 = "Standard_F2"
-  instances           = 2
-  custom_data          = filebase64("web.conf")
-  admin_username      = "devlab"
-  admin_password       =  "Password123"
+  name                            = "example-vmss"
+  resource_group_name             = azurerm_resource_group.example.name
+  location                        = azurerm_resource_group.example.location
+  sku                             = "Standard_F2"
+  instances                       = 3
+  custom_data                     = filebase64("web.conf")
+  admin_username                  = "devlab"
+  admin_password                  = "Password123"
   disable_password_authentication = false
-#   encryption_at_host_enabled = true
-#   admin_ssh_key {
-#     username   = "devlab"
-#     public_key = file("~/.ssh/id_rsa.pub")
-#   }
+  #   encryption_at_host_enabled = true
+  
+  #   admin_ssh_key {
+  #     username   = "devlab"
+  #     public_key = file("~/.ssh/id_rsa.pub")
+  #   }
 
- source_image_reference {
+  source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
     sku       = "16.04-LTS"
@@ -50,13 +51,13 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     primary = true
 
     ip_configuration {
-     name                                   = "IPConfiguration"
-     subnet_id                              = azurerm_subnet.internal.id
-     load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.example.id]
-     primary = true
-   }
+      name                                   = "IPConfiguration"
+      subnet_id                              = azurerm_subnet.internal.id
+      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.example.id]
+      primary                                = true
     }
   }
+}
 
 resource "azurerm_monitor_autoscale_setting" "example" {
   name                = "myAutoscaleSetting"
@@ -71,6 +72,6 @@ resource "azurerm_monitor_autoscale_setting" "example" {
       default = 1
       minimum = 1
       maximum = 5
-    } 
+    }
   }
 }
