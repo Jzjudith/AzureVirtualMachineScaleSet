@@ -51,8 +51,8 @@ resource "azurerm_lb_rule" "example" {
   frontend_port                  = 80
   backend_port                   = 80
   frontend_ip_configuration_name = "FrndPip"
-  backend_address_pool_ids = [ azurerm_lb_backend_address_pool.example.id]
-  probe_id = azurerm_lb_probe.example.id
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.example.id]
+  probe_id                       = azurerm_lb_probe.example.id
 
 }
 

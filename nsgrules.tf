@@ -3,7 +3,7 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
 
- security_rule {
+  security_rule {
     name                       = "Allow-SSH"
     priority                   = 105
     direction                  = "Inbound"
