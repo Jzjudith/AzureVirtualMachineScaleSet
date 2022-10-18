@@ -1,22 +1,4 @@
-# resource "tls_private_key" "ssh" {
-#   algorithm = "RSA"
-#   rsa_bits  = "4096"
-# }
-
-resource "azurerm_virtual_network" "example" {
-  name                = "example-network"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  address_space       = ["10.0.0.0/16"]
-}
-
-resource "azurerm_subnet" "internal" {
-  name                 = "internal"
-  resource_group_name  = azurerm_resource_group.example.name
-  virtual_network_name = azurerm_virtual_network.example.name
-  address_prefixes     = ["10.0.2.0/24"]
-}
-
+# virtual machine scale set
 resource "azurerm_linux_virtual_machine_scale_set" "example" {
   name                            = "example-vmss"
   resource_group_name             = azurerm_resource_group.example.name
@@ -27,12 +9,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   admin_username                  = "devlab"
   admin_password                  = "Password123"
   disable_password_authentication = false
-  #   encryption_at_host_enabled = true
-  
-  #   admin_ssh_key {
-  #     username   = "devlab"
-  #     public_key = file("~/.ssh/id_rsa.pub")
-  #   }
 
   source_image_reference {
     publisher = "Canonical"
