@@ -19,7 +19,3 @@ provider "azurerm" {
   }
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "devlab-vmss-rg"
-  location = "East US2"
-}
