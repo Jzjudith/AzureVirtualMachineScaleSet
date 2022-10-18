@@ -1,5 +1,5 @@
 # AzureVirtualMachineScaleSet
-This configuration
+This configuration creates a virtual machine scale set and a loadbalancer with related resources.
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -38,9 +38,29 @@ No modules.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_address_prefixes"></a> [address\_prefixes](#input\_address\_prefixes) | The address prefixes of the subnet | `list` | <pre>[<br>  "10.0.2.0/24"<br>]</pre> | no |
+| <a name="input_address_space"></a> [address\_space](#input\_address\_space) | The address space of the vitual network | `list` | <pre>[<br>  "10.0.0.0/16"<br>]</pre> | no |
+| <a name="input_lb_name"></a> [lb\_name](#input\_lb\_name) | The name of the load balancer | `string` | `"devvmsslb"` | no |
+| <a name="input_loadbpip"></a> [loadbpip](#input\_loadbpip) | The ip address loadbalancer | `string` | `"loadbpip"` | no |
+| <a name="input_location"></a> [location](#input\_location) | The location where the resources would be created | `string` | `"East US2"` | no |
+| <a name="input_outboundpip"></a> [outboundpip](#input\_outboundpip) | The outbound rule public ip address | `string` | `"outboundpip"` | no |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The nmae of the resource group | `string` | `"devlab-vmss-rg"` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | The tags attached to the resources | `map` | <pre>{<br>  "environment": "Development"<br>}</pre> | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_address_prefixes"></a> [address\_prefixes](#output\_address\_prefixes) | The address prefixes of the subnet |
+| <a name="output_address_space"></a> [address\_space](#output\_address\_space) | The address space of the vitual network |
+| <a name="output_lb_name"></a> [lb\_name](#output\_lb\_name) | The name of the load balancer |
+| <a name="output_loadbpip"></a> [loadbpip](#output\_loadbpip) | The ip address loadbalancer |
+| <a name="output_loadbpip_id"></a> [loadbpip\_id](#output\_loadbpip\_id) | The Id of the load balancer public ip |
+| <a name="output_location"></a> [location](#output\_location) | The location where the resources would be created |
+| <a name="output_outboundpip"></a> [outboundpip](#output\_outboundpip) | The outbound rule public ip address |
+| <a name="output_outboundpip_"></a> [outboundpip\_](#output\_outboundpip\_) | The Id of the load balancer outbound rule public ip |
+| <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | The nmae of the resource group |
+| <a name="output_tags"></a> [tags](#output\_tags) | The tags attached to the resources |
 <!-- END_TF_DOCS -->

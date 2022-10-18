@@ -33,6 +33,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
       primary                                = true
     }
   }
+  depends_on = [
+    azurerm_subnet.internal, azurerm_lb_backend_address_pool.example
+  ]
 }
 
 resource "azurerm_monitor_autoscale_setting" "example" {
@@ -50,4 +53,7 @@ resource "azurerm_monitor_autoscale_setting" "example" {
       maximum = 5
     }
   }
+  depends_on = [
+    azurerm_linux_virtual_machine_scale_set.example
+  ]
 }
