@@ -9,12 +9,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   admin_username                  = "devlab"
   admin_password                  = "Password123"
   disable_password_authentication = false
-  #   encryption_at_host_enabled = true
-  
-  #   admin_ssh_key {
-  #     username   = "devlab"
-  #     public_key = file("~/.ssh/id_rsa.pub")
-  #   }
 
   source_image_reference {
     publisher = "Canonical"
